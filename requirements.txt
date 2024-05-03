@@ -2,7 +2,7 @@
 annotated-types==0.5.0
 anyio==3.7.1
 astunparse==1.6.3
-cachetools==5.3.3
+cachetools==5.3.3    
 certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
@@ -34,7 +34,7 @@ Markdown==3.4.4
 MarkupSafe==2.1.5
 motor==3.4.0
 networkx==2.6.3
-numpy==1.21.6
+numpy==1.26.4
 oauthlib==3.2.2
 opencv-python==4.9.0.80
 opt-einsum==3.3.0
