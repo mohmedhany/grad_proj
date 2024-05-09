@@ -7,9 +7,11 @@ from PIL import Image
 from starlette.responses import StreamingResponse
 import pyodbc
 from typing import List
-
 from base_models import User, UserCreate
 from model import model_load
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=DESKTOP-IOILHI2;DATABASE=FaceCriminalDetection'
                       ';Trusted_Connection=yes;')
@@ -19,6 +21,25 @@ model = model_load()
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
+origins = [
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
