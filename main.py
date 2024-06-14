@@ -9,6 +9,8 @@ import tensorflow as tf
 import uvicorn
 from starlette.middleware.cors import CORSMiddleware
 from base_models import User, UserCreate
+import os
+
 
 # Load models in a separate module or use a more robust model management system
 model = tf.keras.models.load_model("model_over600.h5", compile=False)
@@ -17,6 +19,9 @@ model_CNN = tf.keras.models.load_model("MY_MODEL.h5", compile=False)
 conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL '
                       'Server};SERVER=SQL8006.site4now.net;DATABASE=db_aa9a89_criminaldetection;UID'
                       '=db_aa9a89_criminaldetection_admin;PWD=Ae105222')
+
+port = int(os.environ.get("PORT", 3000))
+
 
 app = FastAPI()
 
@@ -166,4 +171,4 @@ def delete_user(user_id: int):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=port)
