@@ -6,7 +6,7 @@ class User(BaseModel):
     name: str
     phone: int
     email: str
-    password: str
+    password: str = None
 
 
 class UserCreate(BaseModel):
