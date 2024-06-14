@@ -20,7 +20,7 @@ conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL '
                       'Server};SERVER=SQL8006.site4now.net;DATABASE=db_aa9a89_criminaldetection;UID'
                       '=db_aa9a89_criminaldetection_admin;PWD=Ae105222')
 
-port = int(os.environ.get("PORT", 3000))
+port = int(os.environ.get("PORT", 8000))
 
 
 app = FastAPI()
